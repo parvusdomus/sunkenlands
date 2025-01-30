@@ -1,23 +1,22 @@
 {
-	"id": "beyond-the-wall",
-	"title": "Beyond The Wall",
-	"description": "",
+	"id": "sunkenlands",
+	"title": "Through The Sunken Lands",
+	"description": "Unofficial system for 'Through the Sunken Lands' based in the 'Beyond the Wall' system by Matheus Clemente",
 	"authors": [
 		{
-			"name": "Matheus Clemente",
-			"discord": "mclemente"
+			"name": "Parvus Domus"
 		}
 	],
-	"esmodules": ["module/beyond-the-wall.js"],
-	"styles": ["styles/beyond-the-wall.css"],
+	"esmodules": ["module/sunkenlands.js"],
+	"styles": ["styles/sunkenlands.css"],
 	"languages": [
 		{
 			"lang": "en",
 			"path": "lang/en.json"
 		},
 		{
-			"lang": "pt-BR",
-			"path": "lang/pt-BR.json"
+			"lang": "es",
+			"path": "lang/es.json"
 		}
 	],
 	"compatibility": {
