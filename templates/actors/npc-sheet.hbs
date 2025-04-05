@@ -8,20 +8,27 @@
 	<section class="sheet-body flexrow">
 		<div class="tab features flexrow" data-group="primary" data-tab="features">
 			<div class="left-side">
-				<div class="saves flexrow">
-					{{#each saves as | save id |}}
-					<div class="save flexcol" data-save="{{id}}">
-						<br>
-						<label class="save-name rollable">{{save.label}}</label>
-						<div class="save-wrapper">
-							<input type="number" name="system.saves.{{id}}.value" value="{{save.value}}" placeholder="20" data-dtype="Number">
-						</div>
-					</div>
-					{{/each}}
+				<div>
+					<table style="text-align: center;">
+						<tr class="abilities">
+							{{#each abilities as | ability id | }}
+									<td class="ability-label ability" data-ability="{{id}}">
+										<label class="abitily-name rollable">{{ability.abbreviation}}</label>
+									</td>
+							{{/each}}
+						</tr>
+						<tr>
+							{{#each abilities as | ability id | }}
+								<div>
+									<td>
+										<input type="number" name="system.abilities.{{id}}.value" value="{{ability.value}}" min="1" class="ability-score" placeholder="10" data-dtype="Number">
+									</td>
+								</div>
+							{{/each}}
+						</tr>
+					</table>
 				</div>
-				<div><br><br><br><br></div>
 				<hr>
-				<div><br><br></div>
 				<div class="right-fields flexrow">
 					<div class="armor flexcol">
 						<label>{{localize "SUNKEN.ArmorClass"}}</label>
@@ -37,7 +44,18 @@
 						</div>
 					</div>
 				</div>
-				
+				<hr>
+				<div class="saves flexrow">
+					{{#each saves as | save id |}}
+					<div class="save flexcol" data-save="{{id}}">
+						<br>
+						<label class="save-name rollable">{{save.label}}</label>
+						<div class="save-wrapper">
+							<input type="number" name="system.saves.{{id}}.value" value="{{save.value}}" placeholder="20" data-dtype="Number">
+						</div>
+					</div>
+					{{/each}}
+				</div>
 			</div>
 
 			<div class="spacer flexrow"></div>

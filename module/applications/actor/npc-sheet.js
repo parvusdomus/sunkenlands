@@ -48,6 +48,7 @@ export default class NPCSheetSUNKEN extends ActorSheetSUNKEN {
 		for (const [a, abl] of Object.entries(context.abilities)) {
 			abl.label = CONFIG.SUNKEN.abilities[a]?.label;
 			abl.features = CONFIG.SUNKEN.abilities[a]?.features.split(", ");
+			abl.abbreviation = CONFIG.SUNKEN.abilities[a]?.abbreviation;
 		}
 		for (const [s, save] of Object.entries(context.saves)) {
 			save.label = CONFIG.SUNKEN.saves[s]?.label;

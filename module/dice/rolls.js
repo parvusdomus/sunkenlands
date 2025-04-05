@@ -9,8 +9,13 @@ export async function attibuteRoll (actor, rolltext, attr_label, attr_value, att
 	let actor_id=actor._id
 	let total=0
 	let canReroll=reroll
-	if (Number(actor.system.fortunePoints.value)<=0){
+	if (actor.type=="npc"){
 		canReroll=false
+	}
+	else {
+		if (Number(actor.system.fortunePoints.value)<=0){
+			canReroll=false
+		}
 	}
 	if (game.modules.get('dice-so-nice')?.active){
         game.dice3d.showForRoll(roll,game.user,true,false,null)
