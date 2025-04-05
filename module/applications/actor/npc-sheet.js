@@ -75,6 +75,10 @@ export default class NPCSheetSUNKEN extends ActorSheetSUNKEN {
 			.forEach((i) => {
 				context.itemList[i.type].push(i);
 			});
+		context.settings = {
+			settingTitle: game.settings.get("sunkenlands", "settingTitle"),
+			titleSize: game.settings.get("sunkenlands", "titleSize"),
+		}
 	}
 
 	activateListeners(html) {
