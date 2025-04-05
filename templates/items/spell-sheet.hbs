@@ -1,0 +1,94 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+	{{> "sunken.item-header" }}
+
+	<nav class="sheet-tabs tabs flexrow" data-group="primary">
+		<a class="item" data-tab="description">{{localize "SUNKEN.Features"}}</a>
+		<a class="item" data-tab="details">{{localize "SUNKEN.Details"}}</a>
+	</nav>
+
+	<section class="sheet-body flexrow">
+		<div class="tab description flexrow" data-group="primary" data-tab="description">
+			<div class="details-sidebar">
+				{{#if (eq system.type "cantrip") }}
+				<div>{{lookup config.spellTypes system.type}} ({{lookup abilitiesLabels system.ability}})</div>
+				{{/if}}
+				{{#if (eq system.type "spell")}}
+				<div>{{lookup config.spellTypes system.type}}</div>
+				{{/if}}
+				{{#if (eq system.type "ritual") }}
+				<div>{{localize "SUNKEN.LevelNRitual" n=system.level}} ({{lookup abilitiesLabels system.ability}})</div>
+				{{/if}}
+
+				{{#if system.range}}
+				<div>{{localize "SUNKEN.Range"}}: {{lookup config.ranges system.range}}</div>
+				{{/if}}
+				{{#if system.duration.units}}
+				<div>{{localize "SUNKEN.Duration"}}: {{sunken-formatDuration system.duration}}</div>
+				{{/if}}
+				{{#if system.save}}
+				<div>{{localize "SUNKEN.Save.Label"}}</div>
+				{{/if}}
+			</div>
+			<div>
+				{{editor descriptionHTML target="system.description" button=true editable=editable engine="prosemirror" collaborate=false}}
+			</div>
+		</div>
+
+		<div class="tab details" data-group="primary" data-tab="details">
+			<div class="form-group">
+				<label>{{localize "SUNKEN.Type"}}</label>
+				<div class="form-fields">
+					<select name="system.type">
+						{{selectOptions config.spellTypes selected=system.type }}
+					</select>
+					{{#if (eq system.type "ritual") }}
+					<label>{{localize "SUNKEN.Level"}}</label>
+					<input type="number" name="system.level" value="{{source.level}}">
+					{{/if}}
+				</div>
+			</div>
+			{{#if (or (eq system.type "cantrip") (eq system.type "ritual")) }}
+			<div class="form-group">
+				<label>{{localize "SUNKEN.Ability.Label"}}</label>
+				<div class="form-fields">
+					<select name="system.ability">
+						{{selectOptions config.abilities selected=system.ability blank="" }}
+					</select>
+				</div>
+			</div>
+			{{/if}}
+			<div class="form-group">
+				<label>{{localize "SUNKEN.Range"}}</label>
+				<div class="form-fields">
+					<select name="system.range">
+						{{selectOptions config.ranges selected=system.range blank="" }}
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>{{localize "SUNKEN.Duration"}}</label>
+				<div class="form-fields">
+					{{#if (lookup config.scalarTimePeriods system.duration.units)}}
+						<input type="number" name="system.duration.value" value="{{source.duration.value}}"
+							placeholder="&mdash;">
+					{{/if}}
+					<label>{{localize "SUNKEN.Units"}}</label>
+					<select name="system.duration.units">
+						{{selectOptions config.timePeriods selected=system.duration.units }}
+					</select>
+					{{#if (lookup config.scalarTimePeriods system.duration.units)}}
+					<label class="perLevel">Per Level</label>
+					<input type="checkbox" name="system.duration.level" {{checked system.duration.level}} />
+					{{/if}}
+				</div>
+			</div>
+			<div class="form-group">
+				<label>{{localize "SUNKEN.Save.Label"}}</label>
+				<div class="form-fields">
+					<input type="checkbox" name="system.save" {{checked system.save}} />
+				</div>
+			</div>
+		</div>
+
+	</section>
+</form>

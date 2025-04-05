@@ -1,0 +1,45 @@
+<div  class="chat-header">
+    <table>
+        <tr>
+            <td>
+                <img src={{{pjImage}}}>
+            </td>
+            <td>
+                {{{header}}}
+            </td>
+            <td style="width: 48px;">
+                <img src={{{enemyImage}}}>
+            </td>
+        </tr>
+    </table>
+</div>
+<div  class="chat-content">
+    <table>
+        <tr>
+            <td>
+                {{{rollTitle}}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="totalRoll" 
+                data-canReroll={{{canReroll}}} 
+                data-rollType={{{rollType}}} 
+                data-actorId={{{actor_id}}} 
+                data-attrLabel={{{data_attr_label}}} 
+                data-attrValue={{{data_attr_value}}} 
+                data-attrMod={{{data_attr_mod}}} 
+                data-attMod={{{data_att_mod}}} 
+                data-itemBonus={{{data_item_bonus}}} 
+                data-bab={{{data_bab}}} 
+                data-dam={{{data_dam}}} 
+                data-damMod={{{data_dam_mod}}}>
+                    <h1>{{{totalRoll}}}</h1>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class={{{rollResult}}}>{{{rollResultText}}}: {{{total}}}</td>
+        </tr>
+    </table>   
+</div>

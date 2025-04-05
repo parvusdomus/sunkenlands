@@ -1,0 +1,54 @@
+<div  class="chat-header-item">
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <label>{{{item.name}}}</label>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div  class="chat-content-item">
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>Bono</td>
+                    </tr>
+                    <tr>
+                        <td>{{item.system.bonus}}</td>
+                    </tr>
+                    <tr>
+                        <td>Daño</td>
+                    </tr>
+                    <tr>
+                        <td>{{item.system.damage}}</td>
+                    </tr>
+                        
+                   
+                </table>
+            </td>
+            <td>
+                <img src="{{item.img}}" title="{{item.name}}" width="36" height="36"/>
+            </td>
+            <td>
+                <table>
+                    {{#if (eq item.system.type "melee")}}
+                        <tr><td>CaC</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.type "ranged")}}
+                        <tr><td>Dist</td></tr>
+                    {{/if}}
+                </table>
+            </td>
+        </tr>
+    <table>
+        <tr>
+            <td>
+                <div>{{{description}}}</div>
+            </td>
+        </tr> 
+    </table>  
+</div>

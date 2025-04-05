@@ -1,0 +1,158 @@
+<div  class="chat-header-item">
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <label>{{{item.name}}}</label>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div  class="chat-content-item">
+    <table>
+        <tr>
+            <td>
+                <table>
+                    {{#if (eq item.system.type "ritual")}}
+                        <tr><td>Ritual</td></tr>
+                        <tr><td>Niv: {{item.system.level}}</td></tr>
+                        {{#if (eq item.system.ability "int")}}
+                            <tr><td>(INT)</td></tr>
+                        {{/if}}
+                        {{#if (eq item.system.ability "wis")}}
+                            <tr><td>(SAB)</td></tr>
+                        {{/if}}
+                        {{#if (eq item.system.ability "cha")}}
+                            <tr><td>(CAR)</td></tr>
+                        {{/if}}
+                    {{/if}}
+                    {{#if (eq item.system.type "spell")}}
+                        <tr><td>Hechizo</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.type "cantrip")}}
+                        <tr><td>Truco</td></tr>
+                        {{#if (eq item.system.ability "int")}}
+                            <tr><td>(INT)</td></tr>
+                        {{/if}}
+                        {{#if (eq item.system.ability "wis")}}
+                            <tr><td>(SAB)</td></tr>
+                        {{/if}}
+                        {{#if (eq item.system.ability "cha")}}
+                            <tr><td>(CAR)</td></tr>
+                        {{/if}}
+                    {{/if}}
+                </table>
+            </td>
+            <td>
+                <img src="{{item.img}}" title="{{item.name}}" width="36" height="36"/>
+            </td>
+            <td>
+                <table>
+                    {{#if (eq item.system.range "self")}}
+                        <tr><td>Propio</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.range "touch")}}
+                        <tr><td>Toque</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.range "near")}}
+                        <tr><td>Cerca</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.range "far")}}
+                        <tr><td>Lejos</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.range "cosmos")}}
+                        <tr><td>Cosmos</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "")}}
+                        <tr><td><i class="fa-solid fa-alarm-clock"></i>&nbsp;<i class="fa-solid fa-xmark"></i></td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "instant")}}
+                        <tr><td><i class="fa-solid fa-alarm-clock"></i>&nbsp;Inst</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "permanent")}}
+                        <tr><td><i class="fa-solid fa-alarm-clock"></i>&nbsp;Perm</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "concentration")}}
+                        <tr><td><i class="fa-solid fa-alarm-clock"></i>&nbsp;Conc</td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "turn")}}
+                        {{#if item.system.duration.level}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;T</td></tr>
+                            <tr><td>x Niv</td></tr>
+                        {{else}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;T</td></tr>
+                        {{/if}}
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "round")}}
+                        {{#if item.system.duration.level}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;R</td></tr>
+                            <tr><td>x Niv</td></tr>
+                        {{else}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;R</td></tr>
+                        {{/if}}
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "minute")}}
+                        {{#if item.system.duration.level}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;M</td></tr>
+                            <tr><td>x Niv</td></tr>
+                        {{else}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;M</td></tr>
+                        {{/if}}
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "hour")}}
+                        {{#if item.system.duration.level}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;H</td></tr>
+                            <tr><td>x Niv</td></tr>
+                        {{else}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;H</td></tr>
+                        {{/if}}
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "day")}}
+                        {{#if item.system.duration.level}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;D</td></tr>
+                            <tr><td>x Niv</td></tr>
+                        {{else}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;D</td></tr>
+                        {{/if}}
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "week")}}
+                        {{#if item.system.duration.level}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;W</td></tr>
+                            <tr><td>x Niv</td></tr>
+                        {{else}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;W</td></tr>
+                        {{/if}}
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "month")}}
+                        {{#if item.system.duration.level}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;Mo</td></tr>
+                            <tr><td>x Niv</td></tr>
+                        {{else}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;Mo</td></tr>
+                        {{/if}}
+                    {{/if}}
+                    {{#if (eq item.system.duration.units "year")}}
+                        {{#if item.system.duration.level}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;Y</td></tr>
+                            <tr><td>x Niv</td></tr>
+                        {{else}}
+                            <tr><td>{{item.system.duration.value}}&nbsp;Y</td></tr>
+                        {{/if}}
+                    {{/if}}
+                    {{#if item.system.save}}
+                        <tr><td>Sav&nbsp;<i class="fa-solid fa-check"></i></td></tr>
+                    {{else}}
+                        <tr><td>Sav&nbsp;<i class="fa-solid fa-xmark"></i></td></tr>
+                    {{/if}}
+                </table>
+            </td>
+        </tr>
+    <table>
+        <tr>
+            <td>
+                <div>{{{description}}}</div>
+            </td>
+        </tr> 
+    </table>  
+</div>

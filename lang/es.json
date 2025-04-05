@@ -1,0 +1,217 @@
+{
+	"TYPES": {
+		"Actor": {
+			"character": "Jugador",
+			"npc": "PNJ"
+		},
+		"Item": {
+			"class": "Clase",
+			"equipment": "Armadura",
+			"loot": "Botín",
+			"skill": "Habilidad",
+			"spell": "Hechizo",
+			"trait": "Rasgo",
+			"weapon": "Arma"
+		}
+	},
+	"SUNKEN": {
+		"ChatContextDamage": "Aplicar Daño",
+		"ChatContextHealing": "Aplicar Curación",
+		"ChatContextReroll": "Repetir Tirada (Fortuna)",
+		"Ability": {
+			"Label": "Habilidad",
+			"LabelPl": "Habilidades",
+			"Str": {
+				"Abbr": "Fue",
+				"Label": "Fuerza",
+				"Features": "Att y daño CaC"
+			},
+			"Dex": {
+				"Abbr": "Des",
+				"Label": "Destreza",
+				"Features": "Att dist CA iniciativa"
+			},
+			"Con": {
+				"Abbr": "Con",
+				"Label": "Constitución",
+				"Features": "PG por nivel"
+			},
+			"Int": {
+				"Abbr": "Int",
+				"Label": "Inteligencia",
+				"Features": "Idiomas conocidos"
+			},
+			"Wis": {
+				"Abbr": "Sab",
+				"Label": "Sabiduría",
+				"Features": "Salvación control mental"
+			},
+			"Cha": {
+				"Abbr": "Car",
+				"Label": "Carisma",
+				"Features": "Aliados máximos"
+			}
+		},
+		"Ranges": {
+			"Self": {
+				"Label": "Propio"
+			},
+			"Touch": {
+				"Label": "Toque"
+			},
+			"Near": {
+				"Label": "Cerca"
+			},
+			"Far": {
+				"Label": "Lejos"
+			},
+			"Cosmos": {
+				"Label": "Cosmos"
+			}
+		},
+		"Alignment": "Alineamiento",
+		"Alignments": {
+			"Law": {
+				"Label": "Legal"
+			},
+			"Chaos": {
+				"Label": "Caótico"
+			},
+			"Neutral": {
+				"Label": "Neutral"
+			},
+			"Any": {
+				"Label": "Cualquiera"
+			}
+		},
+		"Armor": "Armadura",
+		"ArmorClass": "Clase de Armadura",
+		"ArmorClassShort": "Armadura",
+		"Attack": "Ataque",
+		"Attacks": "Ataques",
+		"BaseAttackBonus": "Bono Ataque Base",
+		"BaseAttackBonusShort": "B.Ataque",
+		"Bonus": "Bono",
+		"BonusToHit": "Bono a Golpear",
+		"Cantrip": "Truco",
+		"ClassFeatures": "Habilidades de Clase",
+		"Damage": "Daño",
+		"Details": "Detalles",
+		"Equipment": {
+			"Light": "Armadura Ligera",
+			"Medium": "Armadura Media",
+			"Heavy": "Armadura Pesada",
+			"Natural": "Armadura Natural",
+			"Shield": "Escudo"
+		},
+		"EquipmentLabel": "Equipo",
+		"Equipped": "Equipado",
+		"Experience": "Experiencia",
+		"Features": "Rasgos",
+		"Item": {
+			"Equipment": "Armaduras",
+			"Loot": "Botín",
+			"Spell": "Hechizos",
+			"Trait": "Dotes",
+			"Weapon": "Armas"
+		},
+		"Duration": "Duración",
+		"DurationPermanent": "Permanente",
+		"DurationTime": "Tiempo",
+		"FortunePoints": "Puntos de Fortuna",
+		"FortunePointsShort": "Fortuna",
+		"HitDice": "D.Golpe",
+		"HitPoints": "P. Golpe",
+		"HitPointsShort": "PG",
+		"Initiative": "Iniciativa",
+		"InitiativeShort": "Ini",
+		"InitiativeBonus": "B.Iniciativa",
+		"Level": "Nivel",
+		"Modifier": "Modificador",
+		"None": "Ninguno",
+		"Notes": "Notas",
+		"Penalty": "Penalizador",
+		"Range": "Alcance",
+		"Ritual": "Ritual",
+		"LevelNRitual": "Ritual de Nivel {n}",
+		"QuickAccess": "Acceso Rápido",
+		"Save": {
+			"Label": "Salvación",
+			"LabelPl": "Salvaciones",
+			"Poison": {
+				"Label": "Veneno"
+			},
+			"Breath": {
+				"Label": "Aliento"
+			},
+			"Polymorph": {
+				"Label": "Polimorfía"
+			},
+			"Spell": {
+				"Label": "Conjuro"
+			},
+			"MagicItem": {
+				"Label": "O.Mágico"
+			},
+			"Fortitude": {
+				"Label": "Fortaleza"
+			},
+			"Reflex": {
+				"Label": "Reflejos"
+			},
+			"Will": {
+				"Label": "Voluntad"
+			}
+		},
+		"Skills": "HAbilidades",
+		"Spell": "Hechizo",
+		"TimeNone": "Ninguno",
+		"TimeTurn": "Turno",
+		"TimeRound": "Ronda",
+		"TimeMinute": "Minuto",
+		"TimeHour": "Hora",
+		"TimeDay": "Día",
+		"TimeWeek": "Semana",
+		"TimeMonth": "Mes",
+		"TimeYear": "Año",
+		"TimeConcentration": "Concentración",
+		"TimePerm": "Permanente",
+		"TimeInst": "Instantáneo",
+		"Type": "Tipo",
+		"Units": "Unidades",
+		"Unequipped": "No Equipado",
+		"Weapon": {
+			"Melee": "CaC",
+			"Ranged": "Distancia"
+		},
+		"config": {
+			"simplified-savesName": "Tiradas de Salvación Simplificadas",
+			"simplified-savesHint": "Las tiradas de salvación serán Reflejos, Fortaleza y Voluntad.",
+			"roll-overName": "Tirar por Encima",
+			"roll-overHint": "Las tiradas de atributos tendrán como objetivo igualar o superar 12 en lugar de tirar por debajo del atributo.",
+			"doubleDamageName": "Doble de Daño en Críticos",
+			"doubleDamageHint": "Al obtener un éxito crítico (20 natural) en un ataque, el daño se multiplica por dos.",
+			"luckHealingName": "Curación con Fortuna",
+			"luckHealingHint": "Gasta un punto de fortuna para curar tu dado de golpe + nivel.",
+			"settingTitleName": "Título de la Ambientación",
+			"settingTitleHint": "Este es el título de la ambientación que aparecerá en las hojas de personaje.",
+			"titleSizeName": "Tamaño del Título de Ambientación",
+			"titleSizeHint": "Ajusta aquí el tamaño del título de la ambientación.",
+			"settingGoldName": "Nombre de la moneda de Oro",
+			"settingGoldHint": "Nombre de la moneda de Oro en tu ambientación",
+			"settingSilverName": "Nombre de la moneda de Plata",
+			"settingSilverHint": "Nombre de la moneda de Plata en tu ambientación",
+			"settingCopperName": "Nombre de la moneda de Cobre",
+			"settingCopperHint": "Nombre de la moneda de Cobre en tu ambientación"
+
+		},
+		"messages": {
+			"noTarget": "Debes seleccionar un objetivo.",
+			"noFortune": "No tienes puntos de Fortuna.",
+			"getsHealing": "recibe Curación",
+			"getsDamage": "recibe Daño",
+			"dies": "ha muerto",
+			"spendsFortuneReroll": "Gastas un punto de Fortuna para repetir una tirada."
+		}
+	}
+}

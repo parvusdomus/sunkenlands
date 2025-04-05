@@ -1,0 +1,70 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+	{{> "sunken.actor-header" }}
+	<nav class="sheet-tabs tabs flexrow" data-group="primary">
+		<a class="item" data-tab="features">{{localize "SUNKEN.Features"}}</a>
+		<a class="item" data-tab="notes">{{localize "SUNKEN.Notes"}}</a>
+		{{!-- <a class="item" data-tab="effects">Efeitos</a> --}}
+	</nav>
+	<section class="sheet-body flexrow">
+		<div class="tab features flexrow" data-group="primary" data-tab="features">
+			<div class="left-side">
+				<div class="saves flexrow">
+					{{#each saves as | save id |}}
+					<div class="save flexcol" data-save="{{id}}">
+						<br>
+						<label class="save-name rollable">{{save.label}}</label>
+						<div class="save-wrapper">
+							<input type="number" name="system.saves.{{id}}.value" value="{{save.value}}" placeholder="20" data-dtype="Number">
+						</div>
+					</div>
+					{{/each}}
+				</div>
+				<div><br><br><br><br></div>
+				<hr>
+				<div><br><br></div>
+				<div class="right-fields flexrow">
+					<div class="armor flexcol">
+						<label>{{localize "SUNKEN.ArmorClass"}}</label>
+						<br>
+						<input type="number" name="system.ac" value="{{system.ac}}" placeholder="10" data-dtype="Number" />
+					</div>
+					<div class="flexcol">
+						<label>{{localize "SUNKEN.HitPoints"}}</label>
+						<br>
+						<div class="hp flexrow">
+							<input type="number" name="system.hp.value" value="{{system.hp.value}}" data-dtype="Number" />
+							<input type="number" name="system.hp.max" value="{{system.hp.max}}" data-dtype="Number" />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="spacer flexrow"></div>
+	
+			<div class="right-side">
+				<section class="items-list inventory-list" data-item-list="inventory">
+					{{#each itemList as | data il |}}
+					<div class="items-section card" data-type="{{il}}">
+						<div class="items-header header flexrow" style="background-color:#34435C; margin-top: 2px; color: white;">
+							<h3 class="item-name" style="margin-top: 8px;">{{lookup ../config.itemTypes il}}</h3>
+							<div class="item-header item-controls">
+								<a class="item-control item-create" data-type="{{il}}"><i class="fas fa-plus"></i>&nbsp;</a>
+							</div>
+						</div>
+						<ol class="item-list unlist">
+						{{#each data as | item |}}
+							{{> "sunken.actor-item-display" item=item }}
+						{{/each}}
+						</ol>
+					</div>
+					{{/each}}
+				</section>
+			</div>
+		</div>
+		<div class="tab notes flexrow" data-group="primary" data-tab="notes">
+			{{editor descriptionHTML target="system.notes" button=true editable=editable
+					engine="prosemirror" collaborate=false}}
+		</div>
+	</section>
+</form>

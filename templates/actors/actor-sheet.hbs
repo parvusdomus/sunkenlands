@@ -1,0 +1,173 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+	{{> "sunken.actor-header" }}
+
+	<nav class="sheet-tabs tabs flexrow" data-group="primary">
+		<a class="item" data-tab="features">{{localize "SUNKEN.Features"}}</a>
+		<a class="item" data-tab="class">{{localize "SUNKEN.ClassFeatures"}}</a>
+		<a class="item" data-tab="items">{{localize "SUNKEN.EquipmentLabel"}}</a>
+		<a class="item" data-tab="notes">{{localize "SUNKEN.Notes"}}</a>
+		{{!-- <a class="item" data-tab="effects">Efeitos</a> --}}
+	</nav>
+
+	<section class="sheet-body flexrow">
+		<div class="tab features flexrow" data-group="primary" data-tab="features">
+			<div class="left-side">
+				<div class="flexrow">
+					<table class="abilities flexcol">
+					{{#each abilities as | ability id | }}
+					<tr class="ability" data-ability="{{id}}">
+						<td class="ability-label flexrow">
+							<label class="abitily-name rollable">{{ability.abbreviation}}&nbsp;</label>
+						</td>
+						<td>
+							<input type="number" name="system.abilities.{{id}}.value" value="{{ability.value}}" min="1" class="ability-score" placeholder="10" data-dtype="Number">
+						</td>
+						<td class="ability-modifiers tooltip">
+							<span class="ability-mod">
+								{{numberFormat ability.mod decimals=0 sign=true}}&nbsp;
+							</span>
+							<span class="tooltiptext">
+            					<label>{{ability.features}}</label>
+          					</span>
+						</td>		
+					</tr>
+					{{/each}}
+					</table>
+					<div class="spacer flexrow"></div>
+					<div class="abilities flexcol">
+						<div class="ability-label armor flexrow" style="align-items: center;">
+							<label class="abitily-name">&nbsp;&nbsp;{{localize "SUNKEN.ArmorClassShort"}}&nbsp;</label>
+							<input type="number" name="system.ac" value="{{system.ac}}" placeholder="10" data-dtype="Number" />
+						</div>
+						<div class="flexrow" style="align-items: center;">
+							<label class="abitily-name">&nbsp;&nbsp;{{localize "SUNKEN.FortunePointsShort"}}&nbsp;</label>
+							<input type="number" name="system.fortunePoints.value" value="{{system.fortunePoints.value}}" data-dtype="Number" min="0" />
+							<input type="number" name="system.fortunePoints.max" value="{{system.fortunePoints.max}}" data-dtype="Number" min="0" />
+						</div>
+						<div class="flexrow" style="align-items: center;">
+							
+							<label class="abitily-name">&nbsp;&nbsp;{{localize "SUNKEN.HitPointsShort"}}&nbsp;</label>
+							{{#if (eq settings.luckHealing true)}}
+								<span class="healing-roll"><i class="fa-solid fa-dice-d20"></i></span>
+							{{/if}}
+							<div class="hp flexrow">
+								<input style="max-width: 70px; width: 70px;" type="number" name="system.hp.value" value="{{system.hp.value}}" data-dtype="Number" width="3"/>
+								<input style="max-width: 70px; width: 70px;" type="number" name="system.hp.max" value="{{system.hp.max}}" data-dtype="Number" width="3"/>
+							</div>
+						</div>
+						<div class="flexrow" style="align-items: center;">
+							<label class="abitily-name">&nbsp;&nbsp;{{localize "SUNKEN.BaseAttackBonusShort"}}&nbsp;</label>
+							<input name="system.bab" type="number" value="{{system.bab}}" />
+						</div>
+						<div class="flexrow" style="align-items: center;">
+							<label class="abitily-name">&nbsp;&nbsp;{{localize "SUNKEN.Initiative"}}&nbsp;</label>
+							<input name="system.initiative" type="number" value="{{system.initiative}}" />
+						</div>
+					</div>
+					
+				</div>
+				<hr>
+				<div class="saves flexrow">
+					{{#each saves as | save id |}}
+					<div class="save flexcol" data-save="{{id}}">
+						<label class="save-name rollable">{{save.label}}</label>
+						<div class="save-wrapper">
+							<input type="number" name="system.saves.{{id}}.value" value="{{save.value}}" placeholder="20" data-dtype="Number">
+						</div>
+						 <br>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+
+			<div class="spacer flexrow"></div>
+
+			<div class="right-side">
+				<div class="skills">
+					<div class="item-titles flexrow">
+						<div class="item-name">{{localize "SUNKEN.Skills"}}</div>
+						<div class="item-controls">
+							<a class="item-control item-create" data-type="skill"><i class="fa fa-plus"></i></a>
+						</div>
+					</div>
+					{{#each skills as | skill |}}
+					<div class="item flexrow" data-item-id="{{skill._id}}">
+						<div class="item-name">
+							<a class="skill-roll item-rollable"  data-tooltip="{{skill.system.description~}}">
+								{{skill.name}} ({{#if skill.abl}}{{skill.abl}} {{/if}}{{numberFormat skill.system.bonus decimals=0 sign=true}})
+							</a>
+						</div>
+						<div class="item-controls">
+							<a class="item-control item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+							<a class="item-control item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+				{{#if favorites.length}}
+				<hr>
+				<h3>{{localize "SUNKEN.QuickAccess"}}</h3>
+				<ol class="item-list unlist">
+				{{#each favorites as | item |}}
+					{{> "sunken.actor-item-display" item=item }}
+				{{/each}}
+				</ol>
+				{{/if}}
+			</div>
+		</div>
+
+		<div class="tab class flexrow" data-group="primary" data-tab="class">
+			<div class="details-sidebar">
+				<div class="form-group">
+					<label>{{localize "SUNKEN.Armor"}}: {{class.system.armor}}</label>
+				</div>
+				<div class="form-group">
+					<label>{{localize "SUNKEN.InitiativeBonus"}}: {{class.system.initiative}}</label>
+				</div>
+				<div class="form-group">
+					<label>{{localize "SUNKEN.HitDice"}}: {{class.system.hd}}</label>
+				</div>
+			</div>
+			
+			<div class="class-abilities">
+				{{editor abilitiesHTML editable=false }}
+			</div>
+		</div>
+
+		<div class="tab items" data-group="primary" data-tab="items">
+			<div class="form-fields flexrow" style="align-items: center;">
+						<label>{{settings.goldName}}</label>
+						<input style="background-color:gold;max-width: 90px;" type="number" name="system.money.gold" value="{{system.money.gold}}" placeholder="0" data-dtype="Number">
+
+						<label>&nbsp;{{settings.silverName}}</label>
+						<input style="background-color:silver;max-width: 90px;" type="number" name="system.money.silver" value="{{system.money.silver}}" placeholder="0" data-dtype="Number">
+
+						<label>&nbsp;{{settings.copperName}}</label>
+						<input style="background-color:peru ;max-width: 90px;" type="number" name="system.money.copper" value="{{system.money.copper}}" placeholder="0" data-dtype="Number">
+			</div>
+			<section class="items-list inventory-list" data-item-list="inventory">
+			{{#each itemList as | data il |}}
+			<div class="items-section card" data-type="{{il}}">
+				<div class="items-header header flexrow" style="background-color:#34435C; margin-top: 2px; color: white;">
+					<h3 class="item-name" style="margin-top: 8px;">{{lookup ../config.itemTypes il}}</h3>
+					<div class="item-header item-controls">
+						<a class="item-control item-create" data-type="{{il}}"><i class="fas fa-plus"></i>&nbsp;</a>
+					</div>
+				</div>
+				<ol class="item-list unlist">
+				{{#each data as | item |}}
+					{{> "sunken.actor-item-display" item=item }}
+				{{/each}}
+				</ol>
+			</div>
+			{{/each}}
+			</section>
+		</div>
+
+		<div class="tab notes flexcol" data-group="primary" data-tab="notes">
+			{{editor descriptionHTML target="system.notes" button=true editable=editable
+					engine="prosemirror" collaborate=false}}
+		</div>
+
+	</section>
+</form>

@@ -1,0 +1,216 @@
+{
+	"TYPES": {
+		"Actor": {
+			"character": "Character",
+			"npc": "NPC"
+		},
+		"Item": {
+			"class": "Class",
+			"equipment": "Armor",
+			"loot": "Loot",
+			"skill": "Skill",
+			"spell": "Spell",
+			"trait": "Trait",
+			"weapon": "Weapon"
+		}
+	},
+	"SUNKEN": {
+		"ChatContextDamage": "Apply Damage",
+		"ChatContextHealing": "Apply Healing",
+		"ChatContextReroll": "Reroll (Luck)",
+		"Ability": {
+			"Label": "Ability",
+			"LabelPl": "Abilities",
+			"Str": {
+				"Abbr": "Str",
+				"Label": "Strength",
+				"Features": "melee to hit, melee damage"
+			},
+			"Dex": {
+				"Abbr": "Dex",
+				"Label": "Dexterity",
+				"Features": "ranged to hit, armor class, initiative"
+			},
+			"Con": {
+				"Abbr": "Con",
+				"Label": "Constitution",
+				"Features": "hit points per level"
+			},
+			"Int": {
+				"Abbr": "Int",
+				"Label": "Intelligence",
+				"Features": "languages known"
+			},
+			"Wis": {
+				"Abbr": "Wis",
+				"Label": "Wisdom",
+				"Features": "save vs mind control"
+			},
+			"Cha": {
+				"Abbr": "Cha",
+				"Label": "Charisma",
+				"Features": "max # of allies"
+			}
+		},
+		"Ranges": {
+			"Self": {
+				"Label": "Self"
+			},
+			"Touch": {
+				"Label": "Touch"
+			},
+			"Near": {
+				"Label": "Near"
+			},
+			"Far": {
+				"Label": "Far"
+			},
+			"Cosmos": {
+				"Label": "Cosmos"
+			}
+		},
+		"Alignment": "Alignment",
+		"Alignments": {
+			"Law": {
+				"Label": "Lawful"
+			},
+			"Chaos": {
+				"Label": "Chaotic"
+			},
+			"Neutral": {
+				"Label": "Neutral"
+			},
+			"Any": {
+				"Label": "Any"
+			}
+		},
+		"Armor": "Armor",
+		"ArmorClass": "Armor Class",
+		"ArmorClassShort": "AC",
+		"Attack": "Attack",
+		"Attacks": "Attacks",
+		"BaseAttackBonus": "Base Attack Bonus",
+		"BaseAttackBonusShort": "BAB",
+		"Bonus": "Bonus",
+		"BonusToHit": "Bonus to Hit",
+		"Cantrip": "Cantrip",
+		"ClassFeatures": "Class Features",
+		"Damage": "Damage",
+		"Details": "Details",
+		"Equipment": {
+			"Light": "Light Armor",
+			"Medium": "Medium Armor",
+			"Heavy": "Heavy Armor",
+			"Natural": "Natural Armor",
+			"Shield": "Shield"
+		},
+		"EquipmentLabel": "Equipment",
+		"Equipped": "Equipped",
+		"Experience": "Experience",
+		"Features": "Features",
+		"Item": {
+			"Equipment": "Armor",
+			"Loot": "Loot",
+			"Spell": "Spells",
+			"Trait": "Traits",
+			"Weapon": "Weapons"
+		},
+		"Duration": "Duration",
+		"DurationPermanent": "Permanent",
+		"DurationTime": "Time",
+		"FortunePoints": "Fortune Points",
+		"FortuneShort": "Fortune",
+		"HitDice": "Hit Dice",
+		"HitPoints": "Hit Points",
+		"HitPointsShort": "HP",
+		"Initiative": "Initiative",
+		"InitiativeShort": "Ini",
+		"InitiativeBonus": "Initiative Bonus",
+		"Level": "Level",
+		"Modifier": "Modifier",
+		"None": "None",
+		"Notes": "Notes",
+		"Penalty": "Penalty",
+		"Range": "Range",
+		"Ritual": "Ritual",
+		"LevelNRitual": "Level {n} Ritual",
+		"QuickAccess": "Quick Access",
+		"Save": {
+			"Label": "Save",
+			"LabelPl": "Saves",
+			"Poison": {
+				"Label": "Poison"
+			},
+			"Breath": {
+				"Label": "Breath Weapon"
+			},
+			"Polymorph": {
+				"Label": "Polymorph"
+			},
+			"Spell": {
+				"Label": "Spell"
+			},
+			"MagicItem": {
+				"Label": "Magic Item"
+			},
+			"Fortitude": {
+				"Label": "Fortitude"
+			},
+			"Reflex": {
+				"Label": "Reflex"
+			},
+			"Will": {
+				"Label": "Will"
+			}
+		},
+		"Skills": "Skills",
+		"Spell": "Spell",
+		"TimeNone": "None",
+		"TimeTurn": "Turn",
+		"TimeRound": "Round",
+		"TimeMinute": "Minute",
+		"TimeHour": "Hour",
+		"TimeDay": "Day",
+		"TimeWeek": "Week",
+		"TimeMonth": "Month",
+		"TimeYear": "Year",
+		"TimeConcentration": "Concentration",
+		"TimePerm": "Permanent",
+		"TimeInst": "Instant",
+		"Type": "Type",
+		"Units": "Units",
+		"Unequipped": "Unequipped",
+		"Weapon": {
+			"Melee": "Melee",
+			"Ranged": "Ranged"
+		},
+		"config": {
+			"simplified-savesName": "Simplified Save Rolls",
+			"simplified-savesHint": "Save rolls are now Reflex, Fortitude and Will.",
+			"roll-overName": "Roll Over",
+			"roll-overHint": "Attribute rolls are now over 12 instead of below attribute.",
+			"doubleDamageName": "Critical Double Damage",
+			"doubleDamageHint": "With a critical hit (natural 20) in combat you deal your damage multiplied by 2.",
+			"luckHealingName": "Fortune Healing",
+			"luckHealingHint": "Spend a fortune point to heal your hit dice plus your level.",
+			"settingTitleName": "Setting Title",
+			"settingTitleHint": "This is the setting title that will appear in the character sheet.",
+			"titleSizeName": "Setting Title Font Size",
+			"titleSizeHint": "Adjust here the setting title font size.",
+			"settingGoldName": "Gold coin name",
+			"settingGoldHint": "Name for the Gold coin in your setting",
+			"settingSilverName": "Silver Coin Name",
+			"settingSilverHint": "Name for the Silver coin in your setting",
+			"settingCopperName": "Copper Coin Name",
+			"settingCopperHint": "Name for the Copper coin in your setting"
+		},
+		"messages": {
+			"noTarget": "You have no target.",
+			"noFortune": "You have no Fortune points.",
+			"getsHealing": "gets healing",
+			"getsDamage": "gets damage",
+			"dies": "dies",
+			"spendsFortuneReroll": "You spend 1 Fortune point to re-roll."
+		}
+	}
+}

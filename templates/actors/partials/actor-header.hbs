@@ -1,0 +1,65 @@
+<header class="sheet-header flexrow">
+		<div class="portrait">
+			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+		</div>
+	
+	<div class="header-fields">
+		<input name="name" style="text-align: center;" type="text" value="{{actor.name}}" placeholder="Name"/>
+		{{#if (eq actor.type "character")}}
+		<div class="class flexrow">
+			<div class="form-group class">
+				{{> detailItem item=class type="class"}}
+			</div>
+			<div class="form-group level">
+				<input name="system.level" type="number" value="{{system.level}}" />
+			</div>
+		</div>
+		{{else}}
+		<div class="form-group">
+			<label>{{localize "SUNKEN.HitDice"}}</label>
+			<div class="form-fields">
+				<input style="background-color: lightgrey; text-align: center;" name="system.hd" type="text" value="{{system.hd}}" />
+			</div>
+			<label>&nbsp;&nbsp;{{localize "SUNKEN.Initiative"}}&nbsp;</label>
+			<div class="form-fields">
+				<input style="background-color: lightgrey; text-align: center;" name="system.initiative" type="text" value="{{system.initiative}}" />
+			</div>
+		</div>
+		{{/if}}
+		<div class="form-group">
+			<label>{{localize "SUNKEN.Alignment"}}</label>
+			<div class="form-fields">
+				<select name="system.alignment" style="background: lightgrey; text-align: center;">
+					{{selectOptions config.alignments selected=system.alignment }}
+				</select>
+			</div>
+		</div>
+		<div class="form-group experience">
+			<label>{{localize "SUNKEN.Experience"}}</label>
+			<div class="form-fields">
+				<input name="system.xp.value" type="number" value="{{system.xp.value}}" />
+				{{#if (eq actor.type "character")}}
+				<input name="system.xp.max" type="number" value="{{system.xp.max}}" />
+				{{/if}}
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<h1 style="font-size: {{settings.titleSize}}em; margin-top: 14px;"><label>{{settings.settingTitle}}</label></h1>
+		</div>
+	</div>
+	
+</header>
+
+{{#*inline "detailItem"}}
+    <span class="details-label">{{localize (concat "TYPES.Item." type)}}</span>
+    <h3>
+        <span class="value">{{item.name}}</span>
+        {{#if @root.editable}}
+            {{#if item}}
+                <span class="detail-item-control" data-item-id="{{item.id}}"><i class="fa-solid fa-fw fa-ellipsis-v"></i></span>
+            {{else}}
+                <a data-action="open-compendium" data-compendium={{compendium}}><i class="fa-solid fa-fw fa-search"></i></a>
+            {{/if}}
+        {{/if}}
+    </h3>
+{{/inline}}

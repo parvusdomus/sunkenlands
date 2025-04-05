@@ -1,0 +1,60 @@
+<div  class="chat-header-item">
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <label>{{{item.name}}}</label>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div  class="chat-content-item">
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td><i class="fa-solid fa-shirt"></i></td>
+                        <td>{{item.system.armor}}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa-solid fa-circle-xmark"></i></td>
+                        <td>{{item.system.penalty}}</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <img src="{{item.img}}" title="{{item.name}}" width="36" height="36"/>
+            </td>
+            <td>
+                <table>
+                    {{#if (eq item.system.type "light")}}
+                        <tr><td><i class="fa-solid fa-weight-hanging"></i></td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.type "medium")}}
+                        <tr><td><i class="fa-solid fa-weight-hanging"></i></td></tr>
+                        <tr><td><i class="fa-solid fa-weight-hanging"></i></td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.type "heavy")}}
+                        <tr><td><i class="fa-solid fa-weight-hanging"></i></td></tr>
+                        <tr><td><i class="fa-solid fa-weight-hanging"></i></td></tr>
+                        <tr><td><i class="fa-solid fa-weight-hanging"></i></td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.type "natural")}}
+                        <tr><td><i class="fa-solid fa-paw-claws"></i></td></tr>
+                    {{/if}}
+                    {{#if (eq item.system.type "shield")}}
+                        <tr><td><i class="fa-solid fa-shield"></i></td></tr>
+                    {{/if}}
+                </table>
+            </td>
+        </tr>
+    <table>
+        <tr>
+            <td>
+                <div>{{{description}}}</div>
+            </td>
+        </tr> 
+    </table>  
+</div>

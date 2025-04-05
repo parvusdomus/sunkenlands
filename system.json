@@ -1,0 +1,70 @@
+{
+	"id": "sunkenlands",
+	"title": "Through The Sunken Lands",
+	"description": "Unofficial system for 'Through the Sunken Lands' based in the 'Beyond the Wall' system by Matheus Clemente",
+	"authors": [
+		{
+			"name": "Parvus Domus"
+		}
+	],
+	"esmodules": ["module/sunkenlands.js"],
+	"styles": ["styles/sunkenlands.css"],
+	"languages": [
+		{
+			"lang": "en",
+			"path": "lang/en.json"
+		},
+		{
+			"lang": "es",
+			"path": "lang/es.json"
+		}
+	],
+	"compatibility": {
+		"minimum": 12,
+		"verified": 12,
+		"maximum": 12
+	},
+	"grid": {
+		"distance": 1,
+		"units": "u"
+	},
+	"documentTypes": {
+		"Actor": {
+			"character": {
+				"htmlFields": ["notes"]
+			},
+			"npc": {
+				"htmlFields": ["notes"]
+			}
+		},
+		"Item": {
+			"class": {
+				"htmlFields": ["abilities", "description"]
+			},
+			"equipment": {
+				"htmlFields": ["description"]
+			},
+			"loot": {
+				"htmlFields": ["description"]
+			},
+			"skill": {
+				"htmlFields": ["description"]
+			},
+			"spell": {
+				"htmlFields": ["description"]
+			},
+			"trait": {
+				"htmlFields": ["description"]
+			},
+			"weapon": {
+				"htmlFields": ["description"]
+			}
+		}
+	},
+	"primaryTokenAttribute": "hp",
+	"initiative": "@initiative",
+	"url": "This is auto replaced",
+	"version": "This is auto replaced",
+	"manifest": "This is auto replaced",
+	"download": "This is auto replaced"
+}
