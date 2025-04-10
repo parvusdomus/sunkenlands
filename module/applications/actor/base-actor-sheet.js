@@ -3,6 +3,8 @@ import {attackRoll} from "../../dice/rolls.js";
 import {saveRoll} from "../../dice/rolls.js";
 import {skillRoll} from "../../dice/rolls.js";
 import {healingRoll} from "../../dice/rolls.js";
+import {restingMessage} from "../../other.js";
+import {castingMessage} from "../../other.js";
 
 export default class ActorSheetSUNKEN extends ActorSheet {
 	static get defaultOptions() {
@@ -278,47 +280,51 @@ export default class ActorSheetSUNKEN extends ActorSheet {
 						let currentSpells=Number(this.actor.system.dailyspells.value)
 						if (currentSpells<=0){
 							ui.notifications.warn(game.i18n.localize("SUNKEN.messages.noSpells"));
-							return 1;
+							return;
 						}
 						else {
 							currentSpells--
 							this.actor.update({'system.dailyspells.value': currentSpells})
-							
+							castingMessage (this.actor, item)
+							return;
 						}
 					}
-					if (item.system.ability=='int'||item.system.ability=='wis'||item.system.ability=='cha'){
-						const abl = this.actor.system.abilities[item.system.ability];
-						let title=item.name+"<br>"+CONFIG.SUNKEN.abilities[ability].label+" "+abl.value
-						if (Number(abl.mod)!=0){
-							title+=" ("
-							if (Number(abl.mod)>0){
-								title+="+"+Math.abs(abl.mod)
+					else {
+						castingMessage (this.actor, item)
+						if (item.system.ability!=''){
+							const abl = this.actor.system.abilities[item.system.ability];
+							let title=item.name+"<br>"+CONFIG.SUNKEN.abilities[ability].label+" "+abl.value
+							if (Number(abl.mod)!=0){
+								title+=" ("
+								if (Number(abl.mod)>0){
+									title+="+"+Math.abs(abl.mod)
+								}
+								else {
+									title+=abl.mod
+								}
+								title+=")"
 							}
-							else {
-								title+=abl.mod
-							}
-							title+=")"
+							let html_content='<div class="dialogo">'
+							html_content+='<table><tr><td><h3><label>'+title+'</label></h3></td></tr></table>'
+							html_content+='<table><tr><td><h3><label>BONO&nbsp;</label><input name="modificador" id="modificador" data-dtype="Number" value="0" size=2></input></h3></td>'
+							html_content+='</tr></table></div>'
+							let d = new Dialog({
+								title: item.name,
+								content: html_content,
+								buttons: {
+									 roll: {
+										  icon: '<i class="fa-solid fa-dice" style="color: #34435C;"></i>',
+										  label: "Tirar",
+										  callback: () => {
+											attibuteRoll (this.actor, "1d20", CONFIG.SUNKEN.abilities[ability].label, abl.value, abl.mod, document.getElementById("modificador").value, true);
+										  }
+									 }
+								},
+								render: html => console.log("Register interactivity in the rendered dialog"),
+								close: html => console.log("This always is logged no matter which option is chosen")
+							   });
+							   d.render(true);
 						}
-						let html_content='<div class="dialogo">'
-						html_content+='<table><tr><td><h3><label>'+title+'</label></h3></td></tr></table>'
-						html_content+='<table><tr><td><h3><label>BONO&nbsp;</label><input name="modificador" id="modificador" data-dtype="Number" value="0" size=2></input></h3></td>'
-						html_content+='</tr></table></div>'
-						let d = new Dialog({
-							title: item.name,
-							content: html_content,
-							buttons: {
-				 				roll: {
-				  					icon: '<i class="fa-solid fa-dice" style="color: #34435C;"></i>',
-				  					label: "Tirar",
-				  					callback: () => {
-										attibuteRoll (this.actor, "1d20", CONFIG.SUNKEN.abilities[ability].label, abl.value, abl.mod, document.getElementById("modificador").value, true);
-				  					}
-				 				}
-							},
-							render: html => console.log("Register interactivity in the rendered dialog"),
-							close: html => console.log("This always is logged no matter which option is chosen")
-			   			});
-			   			d.render(true);
 					}
 					break
 				}
@@ -385,6 +391,20 @@ export default class ActorSheetSUNKEN extends ActorSheet {
 				healingRoll (this.actor)
 			}
 			
+		});
+
+		html.find(".resting").on("click", (ev) => {
+			ev.preventDefault();
+			console.log ("RESTING FUNCTION")
+			console.log (this.actor)
+			let currentHP=Number(this.actor.system.hp.value)
+			if (currentHP<Number(this.actor.system.hp.max)){
+				currentHP++
+				this.actor.update({'system.hp.value': currentHP})
+			}
+			let maxDailySpells=this.actor.system.dailyspells.max
+			this.actor.update({'system.dailyspells.value': maxDailySpells})
+			restingMessage (this.actor)
 		});
 
 		html.find(".item-favorite").on("click", (ev) => {
