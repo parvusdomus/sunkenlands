@@ -149,7 +149,13 @@
 			{{#each itemList as | data il |}}
 			<div class="items-section card" data-type="{{il}}">
 				<div class="items-header header flexrow" style="background-color:#34435C; margin-top: 2px; color: white;">
-					<h3 class="item-name" style="margin-top: 8px;">{{lookup ../config.itemTypes il}}</h3>
+					<h3 class="item-name" style="margin-top: 8px;">{{lookup ../config.itemTypes il}}&nbsp; 
+						{{#if (eq il "spell")}}
+							<input type="number" name="system.dailyspells.value" value="{{../system.dailyspells.value}}" placeholder="0" data-dtype="Number">
+							<input type="number" name="system.dailyspells.max" value="{{../system.dailyspells.max}}" placeholder="0" data-dtype="Number">
+						{{/if}}
+					</h3>
+					
 					<div class="item-header item-controls">
 						<a class="item-control item-create" data-type="{{il}}"><i class="fas fa-plus"></i>&nbsp;</a>
 					</div>

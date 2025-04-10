@@ -45,6 +45,10 @@ export default class ActorTemplateData extends foundry.abstract.TypeDataModel {
 				copper: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
 				silver: new fields.NumberField({ nullable: true, integer: true, min: 0, initial: 0 }),
 				gold: new fields.NumberField({ nullable: true, integer: true, min: 0, initial: 0 })
+			}),
+			dailyspells: new fields.SchemaField({
+				value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
+				max: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 })
 			})
 		};
 	}
