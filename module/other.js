@@ -17,7 +17,7 @@ export async function restingMessage (actor) {
 }
 
 export async function castingMessage (actor, item) {
-	let header=actor.name+" lanza el conjuro "+item.name
+	let header=actor.name+" lanza "+item.name
 	let castingContents = await renderTemplate("systems/sunkenlands/templates/chat/casting.html", { 
 		rollType: "casting",
 		canReroll: false,
