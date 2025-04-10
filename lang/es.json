@@ -163,8 +163,8 @@
 				"Label": "Voluntad"
 			}
 		},
-		"Skills": "HAbilidades",
-		"Spell": "Hechizo",
+		"Skills": "Habilidades",
+		"Spell": "Conjuro",
 		"TimeNone": "Ninguno",
 		"TimeTurn": "Turno",
 		"TimeRound": "Ronda",
