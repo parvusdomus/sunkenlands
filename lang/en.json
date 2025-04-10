@@ -210,7 +210,8 @@
 			"getsHealing": "gets healing",
 			"getsDamage": "gets damage",
 			"dies": "dies",
-			"spendsFortuneReroll": "You spend 1 Fortune point to re-roll."
+			"spendsFortuneReroll": "You spend 1 Fortune point to re-roll.",
+			"noSpells": "You have no daily spells left."
 		}
 	}
 }

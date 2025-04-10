@@ -211,7 +211,8 @@
 			"getsHealing": "recibe Curación",
 			"getsDamage": "recibe Daño",
 			"dies": "ha muerto",
-			"spendsFortuneReroll": "Gastas un punto de Fortuna para repetir una tirada."
+			"spendsFortuneReroll": "Gastas un punto de Fortuna para repetir una tirada.",
+			"noSpells": "No te quedan conjuros diarios."
 		}
 	}
 }

@@ -273,6 +273,19 @@ export default class ActorSheetSUNKEN extends ActorSheet {
 				case 'spell':
 				{
 					console.log ("SOY UN HECHIZO")
+					console.log (item.system.type)
+					if (item.system.type=="spell"){
+						let currentSpells=Number(this.actor.system.dailyspells.value)
+						if (currentSpells<=0){
+							ui.notifications.warn(game.i18n.localize("SUNKEN.messages.noSpells"));
+							return 1;
+						}
+						else {
+							currentSpells--
+							this.actor.update({'system.dailyspells.value': currentSpells})
+							
+						}
+					}
 					if (item.system.ability=='int'||item.system.ability=='wis'||item.system.ability=='cha'){
 						const abl = this.actor.system.abilities[item.system.ability];
 						let title=item.name+"<br>"+CONFIG.SUNKEN.abilities[ability].label+" "+abl.value
