@@ -6,18 +6,27 @@ import {skillRoll} from "../dice/rolls.js";
 
 export const addChatMessageContextOptions = function (html, options) {
 	const canApply = function (li) {
-		console.log("LI")
-		console.log(li)
 	  if (canvas.tokens.controlled.length === 0) return false
-	  if ((li.find('.damageRoll').length)||(li.find('.dice-rolls').length)) {
-		console.log ("ENCONTRADO")
+	  let damageRoll=false
+	  let diceRoll=false
+	  if (!!li.querySelector(".damageRoll")){damageRoll=true}
+	  if (!!li.querySelector(".dice-roll")){diceRoll=true}
+	  if (damageRoll||diceRoll) {
 		return true
 	  }
 	}
 
 	const luckReroll = function (li) {
-		const canReroll=li.find('.totalRoll').attr('data-canReroll')
-		if ((li.find('.failed').length || li.find('.fumble').length) && canReroll=="true") return true
+		let message = li.querySelector(".totalRoll")
+		if (!!message){
+			let dataset = message.dataset
+			let isFailed = false
+			let isFumble = false
+			if (!!li.querySelector(".failed")){isFailed=true}
+			if (!!li.querySelector(".fumble")){isFumble=true}
+			const canReroll=dataset.canreroll
+			if ((isFailed || isFumble) && canReroll=="true") return true
+		}
 		return false
 	  }
   
@@ -59,8 +68,17 @@ export const addChatMessageContextOptions = function (html, options) {
    * @return {Promise}
    */
   function applyChatCardDamage (roll, multiplier) {
-	//const amount = roll.find('.damage-applyable').attr('data-damage') || roll.find('.dice-total').text()
-	const amount = roll.find('.dice-total').text()
+	let amount = 0
+	let message=roll.querySelector(".damageRoll")
+	if (message){
+		let dataset = message.dataset
+		amount = dataset.damage
+	}
+	else{
+		message=roll.querySelector(".dice-total")
+		amount = message.innerHTML
+
+	}
 	return Promise.all(canvas.tokens.controlled.map(t => {
 	  const a = t.actor
 	  const effect = CONFIG.statusEffects.find(e => e.id === CONFIG.specialStatusEffects.DEFEATED);
@@ -71,11 +89,6 @@ export const addChatMessageContextOptions = function (html, options) {
       if (!a){
         ui.notifications.warn(game.i18n.localize("SUNKEN.messages.noTarget"));
       }
-	  
-		console.log ("AAAAAAAAAAAAAAAAAA")
-		console.log (a)
-		console.log ("COMBATANT")
-		console.log (combatant)
 	  let cantidad = (Number(multiplier)*Number(amount))
 	  let vida_actual=Number(a.system.hp.value)+cantidad
 	  if (vida_actual>Number(a.system.hp.max)){
@@ -128,31 +141,30 @@ export const addChatMessageContextOptions = function (html, options) {
 }
 
 function fortuneReroll (roll){
-    const messageId = roll[0].dataset.messageId;
+    const messageId = roll.dataset.messageId;
 	let previousMessage= game.messages.get(messageId)
-	const rollType = roll.find('.totalRoll').attr('data-rollType')
-	let actor=game.actors.get(roll.find('.totalRoll').attr('data-actorId'))
-	console.log ("ACTOR")
-	console.log (actor)
+	let message = roll.querySelector(".totalRoll")
+	let dataset = message.dataset
+	const rollType = dataset.rolltype
+	let actor=game.actors.get(dataset.actorid)
 	let fortuna=Number(actor.system.fortunePoints.value)
 	if (fortuna<=0){
 		ui.notifications.warn(game.i18n.localize("SUNKEN.messages.noFortune"));
 		return
 	}
-	let attr_label=roll.find('.totalRoll').attr('data-attrLabel')
-	let attr_value=roll.find('.totalRoll').attr('data-attrValue')
-	let attr_mod=roll.find('.totalRoll').attr('data-attrMod')
-	let bonus=roll.find('.totalRoll').attr('data-bonus')
-	let skill_name=roll.find('.totalRoll').attr('data-skillName')
-	let skill_mod=roll.find('.totalRoll').attr('data-skillMod')
-	let att_mod=roll.find('.totalRoll').attr('data-attMod')
-	let item_bonus=roll.find('.totalRoll').attr('data-itemBonus')
-	let bab=roll.find('.totalRoll').attr('data-bab')
-	let dam=roll.find('.totalRoll').attr('data-dam')
-	let dam_mod=roll.find('.totalRoll').attr('data-damMod')
+	let attr_label=dataset.attrlabel
+	let attr_value=dataset.attrvalue
+	let attr_mod=dataset.attrmod
+	let bonus=dataset.bonus
+	let skill_name=dataset.skillname
+	let skill_mod=dataset.skillmod
+	let att_mod=dataset.attmod
+	let item_bonus=dataset.itembonus
+	let bab=dataset.bab
+	let dam=dataset.dam
+	let dam_mod=dataset.dammod
 	switch(rollType) {
 		case "attribute":
-			console.log ("SOY UNA TIRADA DE ATRIBUTO")
 			fortuna--
 			actor.update({'system.fortunePoints.value': fortuna})
 			ui.notifications.info(game.i18n.localize("SUNKEN.messages.spendsFortuneReroll"));
@@ -160,7 +172,6 @@ function fortuneReroll (roll){
 			previousMessage.delete();
 			break;
 		case "skill":
-			console.log ("SOY UNA TIRADA DE HABILIDAD")
 			fortuna--
 			actor.update({'system.fortunePoints.value': fortuna})
 			ui.notifications.info(game.i18n.localize("SUNKEN.messages.spendsFortuneReroll"));
@@ -168,7 +179,6 @@ function fortuneReroll (roll){
 			previousMessage.delete();
 			break;
 		case "save":
-			console.log ("SOY UNA TIRADA DE SALVACION")
 			fortuna--
 			actor.update({'system.fortunePoints.value': fortuna})
 			ui.notifications.info(game.i18n.localize("SUNKEN.messages.spendsFortuneReroll"));
@@ -176,10 +186,8 @@ function fortuneReroll (roll){
 			previousMessage.delete();
 			break;
 		case "combat":
-			console.log ("SOY UNA TIRADA DE ATAQUE")
 			let enemy= Array.from(game.user.targets)[0]?.actor;
 			if (enemy){
-				console.log ("TENGO TARGET")
 				fortuna--
 				actor.update({'system.fortunePoints.value': fortuna})
 				ui.notifications.info(game.i18n.localize("SUNKEN.messages.spendsFortuneReroll"));
@@ -187,12 +195,10 @@ function fortuneReroll (roll){
 				previousMessage.delete();
 			}
 			else{
-				console.log ("NO TENGO TARGET")
 				ui.notifications.info(game.i18n.localize("SUNKEN.messages.noTarget"));
 			}
 			break;
 		case "damage":
-			console.log ("SOY UNA TIRADA DE DAÑO")
 			break;
 	  }
 	

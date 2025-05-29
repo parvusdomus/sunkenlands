@@ -17,7 +17,8 @@ globalThis.sunken = {
 	utils
 };
 
-Hooks.on('getChatLogEntryContext', chat.addChatMessageContextOptions)
+//Hooks.on('getChatLogEntryContext', chat.addChatMessageContextOptions)
+Hooks.on('getChatMessageContextOptions', chat.addChatMessageContextOptions)
 
 Hooks.once("init", function () {
 	globalThis.sunken = game.sunken = Object.assign(game.system, globalThis.sunken);
@@ -74,8 +75,10 @@ Hooks.once("init", function () {
 
 Hooks.once("i18nInit", () => utils.performPreLocalization(CONFIG.SUNKEN));
 
-Hooks.on("renderChatLog", (app, html, data) => {
-	documents.ItemSUNKEN.chatListeners(html);
-});
+//Hooks.on("renderChatLog", (app, html, data) => {
+//	documents.ItemSUNKEN.chatListeners(html);
+//});
 
-//Hooks.on("renderChatMessage", documents.chat.onRenderChatMessage);
+Hooks.on('renderChatMessage', (message, html) => documents.ItemSUNKEN.chatListeners(message, html))
+//Hooks.on('renderChatLog', (message, html) => documents.ItemSUNKEN.chatListeners(message, html))
+

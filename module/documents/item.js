@@ -41,7 +41,7 @@ export default class ItemSUNKEN extends Item {
 		return { rollData, parts };
 	}
 
-	static chatListeners(html) {
+	static chatListeners(message, html) {
 		html.on("click", ".chat-card button[data-action]", async (event) => {
 			event.preventDefault();
 

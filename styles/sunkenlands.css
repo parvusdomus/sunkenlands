@@ -51,7 +51,16 @@
 
 .chat-header td:nth-child(1){
     text-align: left;
-    width: 40px
+    width: 44px;
+    padding-right: 0px;
+    padding-left: 4px;
+}
+
+.chat-header td:nth-child(3){
+    text-align: left;
+    width: 44px;
+    padding-right: 4px;
+    padding-left: 0px;
 }
 
 .chat-header-item {
@@ -117,6 +126,19 @@
     font-weight: 900;
 }
 
+.chat-content-item td {
+	padding-left: 4px;
+	padding-right: 0px;
+}
+
+.chat-content-item  tr:nth-child(even){
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.chat-content-item  tr:nth-child(odd){
+    background-color: rgba(255, 255, 255, 0);
+}
+
 .chat-content-item h1 {
     border-bottom: none;
 	font-size: 2em;
@@ -142,6 +164,8 @@
 	color: #34435C;
 }
 
+
+
 .chat-content hr{
     border: 2px solid black;
 }
@@ -159,8 +183,8 @@
 
 .chat-content h1 {
     border-bottom: none;
-	font-size: 2em;
-	
+	font-size: 4em;
+    padding-top: 20px;
 }
 @keyframes dicespin {
 	from {transform: rotate(0deg);}
