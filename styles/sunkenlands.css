@@ -199,10 +199,13 @@
   	height: 100px; 
   	background-position: center;
   	background-repeat: no-repeat; 
-  	background-size: contain; 
-	color: white;
+  	background-size: contain; 	
 	line-height: 100px;
 	font-weight: bold;
+}
+
+.totalRoll h1 {
+	color: white;
 }
 
 .damageRoll {
@@ -285,6 +288,7 @@
 }
 .dialog .window-content h3 {
 	border-bottom: none;
+	font-family: RomanSD;
 }
 
 .dialog .window-content table {
@@ -304,6 +308,10 @@
 .sheet nav.sheet-tabs {
 	border-top: 3px solid #34435C;
 	border-bottom: 3px solid #34435C;
+}
+
+.items-header h3 {
+	font-family: RomanSD;
 }
 
 .sunken {
@@ -395,6 +403,9 @@
 			.class.flexrow {
 				gap: 4px;
 			}
+			.class h3 {
+				font-family: RomanSD;
+			}
 			.experience input {
 				max-width: unset;
 				border-color: #34435C;
@@ -403,6 +414,10 @@
 			}
 			.form-group.level {
 				flex: 0 0 auto;
+			}
+			.titlename h1 {
+				text-align: center;
+				font-family: RomanSD;
 			}
 		}
 	}
@@ -477,6 +492,9 @@
 			}
 			.right-side {
 				padding-left: 5px;
+			}
+			.right-side h3 {
+				font-family: RomanSD;
 			}
 			.spacer.flexrow {
 				flex: 0;
