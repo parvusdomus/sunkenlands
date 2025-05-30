@@ -314,6 +314,20 @@
 	font-family: RomanSD;
 }
 
+.paused {
+    background-color: #34435C;
+}
+
+.paused figcaption {
+    color: white;
+	font-family: RomanSD;
+}
+
+.paused img {
+    width: 128px;
+    height: 128px;
+}
+
 .sunken {
 	h3 {
 		border-bottom: none;
