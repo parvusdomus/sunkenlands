@@ -54,12 +54,12 @@ export default class NPCSheetSUNKEN extends ActorSheetSUNKEN {
 			save.label = CONFIG.SUNKEN.saves[s]?.label;
 		}
 
-		context.descriptionHTML = await TextEditor.enrichHTML(source.system.notes, enrichmentOptions);
+		context.descriptionHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(source.system.notes, enrichmentOptions);
 
 		this._prepareItems(context);
 
 		if (context.class) {
-			context.abilitiesHTML = await TextEditor.enrichHTML(context.class.system.abilities, enrichmentOptions);
+			context.abilitiesHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.class.system.abilities, enrichmentOptions);
 		}
 
 		return context;

@@ -6,7 +6,7 @@ import {healingRoll} from "../../dice/rolls.js";
 import {restingMessage} from "../../other.js";
 import {castingMessage} from "../../other.js";
 
-export default class ActorSheetSUNKEN extends ActorSheet {
+export default class ActorSheetSUNKEN extends foundry.appv1.sheets.ActorSheet {
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: ["sunken", "sheet", "actor", "character"],
@@ -59,12 +59,12 @@ export default class ActorSheetSUNKEN extends ActorSheet {
 			save.label = CONFIG.SUNKEN.saves[s]?.label;
 		}
 
-		context.descriptionHTML = await TextEditor.enrichHTML(source.system.notes, enrichmentOptions);
+		context.descriptionHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(source.system.notes, enrichmentOptions);
 
 		this._prepareItems(context);
 
 		if (context.class) {
-			context.abilitiesHTML = await TextEditor.enrichHTML(context.class.system.abilities, enrichmentOptions);
+			context.abilitiesHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.class.system.abilities, enrichmentOptions);
 		}
 
 		return context;

@@ -1,4 +1,4 @@
-export default class ItemSheetSUNKEN extends ItemSheet {
+export default class ItemSheetSUNKEN extends foundry.appv1.sheets.ItemSheet {
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: ["sunken", "sheet", "item"],
@@ -33,10 +33,10 @@ export default class ItemSheetSUNKEN extends ItemSheet {
 			relativeTo: this.item
 		};
 
-		context.descriptionHTML = await TextEditor.enrichHTML(source.system.description, enrichmentOptions);
+		context.descriptionHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(source.system.description, enrichmentOptions);
 
 		if (source.system.abilities) {
-			context.abilitiesHTML = await TextEditor.enrichHTML(source.system.abilities, enrichmentOptions);
+			context.abilitiesHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(source.system.abilities, enrichmentOptions);
 		}
 
 		context.abilitiesLabels = Object.fromEntries(
